@@ -1,4 +1,6 @@
 #include "Board.h"
+#include "Square.cpp"
+#include "Board.cpp"
 
 #include <iostream>
 using namespace std;
