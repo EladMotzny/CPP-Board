@@ -8,11 +8,12 @@ class Board{
     public:
         Board();
         Board(int n);
+        Board(const Board& other);
         ~Board();
-        friend ostream& operator<<(ostream& out, Board b);
+        friend ostream& operator<<(ostream& out, Board& b);
         Square& operator[](initializer_list<int> coordinate);
         
-        void operator=(const Board b);
+        void operator=(const Board& b);
         void operator=(const char c);
         int getRow(){
             return this->row;

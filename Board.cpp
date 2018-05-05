@@ -26,6 +26,7 @@ Board::Board(){
 }
 
 Board::Board(int n){
+    cout << "called c'tor" << endl;
     row = n;
     col = n;
     board = new Square*[col];
@@ -40,17 +41,33 @@ Board::Board(int n){
     }
 }
 
+Board::Board(const Board& other){
+    cout << "copy c'tor" << endl;
+    row = other.row;
+    col = other.col;
+    board = new Square*[col];
+    for (int i = 0; i < col; i++)
+    {
+        board[i] = new Square[row]; //new Square('.');
+    }
+    for(int i=0; i<other.row; i++){
+        for(int j=0; j<other.col; j++){
+                this->board[i][j] = other.board[i][j];
+        }
+    }
+}
+
 Board::~Board() //Destructor
 { 
-    // for (int i = 0; i < this->row; i++){
-    //     delete [] board[i];
-    // }
-
-    // delete [] board;
+    for (int i = 0; i < this->row; i++){
+        delete [] board[i];
+    }
+    //sagi hamudi
+    delete [] board;
 } 
 
 
-ostream& operator<<(ostream& out, Board b){
+ostream& operator<<(ostream& out, Board& b){
     for(int i=0; i<b.getRow(); i++){
         out << "|";
         for(int j=0; j<b.getCol(); j++){
@@ -88,7 +105,7 @@ void Board::operator=(const char c){
     }
 }
 
-void Board::operator=(const Board b){
+void Board::operator=(const Board& b){
     for(int i=0; i<b.row; i++){
         for(int j=0; j<b.col; j++){
                 this->board[i][j] = b.board[i][j];
