@@ -7,9 +7,7 @@ Square::Square(){
      content = '.';  // initialize array to all .
 } 
  
-Square::~Square(){
-    cout << "Square d-tor"<< endl;
-}
+Square::~Square(){}
 
 Square::Square(char c){
      content = c;  // initialize array to all c (X or O)

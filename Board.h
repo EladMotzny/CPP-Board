@@ -8,15 +8,16 @@ class Board{
     public:
         Board();
         Board(int n);
+        Board(const Board& other);
         ~Board();
-        friend ostream& operator<<(ostream& out, Board b);
+        friend ostream& operator<<(ostream& out, Board& b);
         Square& operator[](initializer_list<int> coordinate);
         bool isRow(const Board b);//Checks to see if there is a row win 
         bool isLine(const Board b);//Checks to see if there is a line win
         bool isDiagonalLeft(const Board b);//checks to see if there is a diagonal win
         bool isDiagonalRight(const Board b);//checks to see if there is a diagonal win
         
-        void operator=(const Board b);
+        void operator=(const Board& b);
         void operator=(const char c);
         int getRow(){
             return this->row;
