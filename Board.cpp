@@ -96,5 +96,13 @@ void Board::operator=(const Board b){
     }
 }
 
+bool Board::isRow(const Board b){}
+
+bool Board::isDiagonalLeft(const Board b){}
+
+bool Board::isDiagonalRight(const Board b){}
+
+bool Board::isLine(const Board b){}
+
 
  
