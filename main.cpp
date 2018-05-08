@@ -1,7 +1,7 @@
 #include "Board.h"
-#include "Square.cpp"
-#include "Board.cpp"
+#include "Square.h"
 #include "IllegalCharException.h"
+#include "IllegalCoordinateException.hpp"
 
 #include <iostream>
 using namespace std;
@@ -23,13 +23,12 @@ int main() {
 	// ....
 	// ....
 	// */
-
-	// try {
-	// 	board1[{3,4}]='O';   // This should raise an exception
-	// } catch (const IllegalCoordinateException& ex) {
-	// 	cout << "Illegal coordinate: " << ex.theCoordinate() << endl;  // prints "Illegal coordinate: 3,4"
-	// }
-	// cout << board1[{3,2}] << endl;
+	 try {
+		board1[{3,4}]='O';   // This should raise an exception
+	 } catch (const IllegalCoordinateException& ex) {
+	 	cout << "Illegal coordinate: " << ex.theCoordinate() << endl;  // prints "Illegal coordinate: 3,4"
+	 }
+	 //cout << board1[{3,2}] << endl;
 
 	board1 = '.';     // Fill the entire board with "."
 	cout << board1 << endl;  /* Shows an empty board, as above */

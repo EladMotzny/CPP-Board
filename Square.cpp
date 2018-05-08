@@ -6,7 +6,7 @@ Square::Square(){
     // cout << "Square default c-tor"<< endl;
      content = '.';  // initialize array to all .
 } 
- 
+
 Square::~Square(){}
 
 Square::Square(char c){

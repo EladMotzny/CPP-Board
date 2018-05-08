@@ -1,10 +1,11 @@
 #include <iostream>
-#include "Square.h"
+//#include "Square.h"
 #include "Board.h"
 #include "IllegalCharException.h"
 #include <initializer_list>
 #include <cassert>
 #include <stdexcept>
+#include "IllegalCoordinateException.hpp"
 
 
 using namespace std;
@@ -42,7 +43,7 @@ Board::Board(int n){
 }
 
 Board::Board(const Board& other){
-    cout << "copy c'tor" << endl;
+    //cout << "copy c'tor" << endl;
     row = other.row;
     col = other.col;
     board = new Square*[col];
@@ -69,9 +70,9 @@ Board::~Board() //Destructor
 
 ostream& operator<<(ostream& out, Board& b){
     for(int i=0; i<b.getRow(); i++){
-        out << "|";
+        //out << "|";
         for(int j=0; j<b.getCol(); j++){
-            out << " " << b.board[i][j].getContent() << " |";
+            out << "" << b.board[i][j].getContent();// << " |";
         }
     out << endl << "________________" << endl;
 
@@ -82,8 +83,9 @@ ostream& operator<<(ostream& out, Board& b){
 Square& Board::operator[](initializer_list<int> coordinate){
     int *m_array = new int[2];
     copy(coordinate.begin(), coordinate.end(), m_array);
-    if(sizeof(m_array) != sizeof(int)*2 || m_array[0]>this->getRow() || m_array[1]>this->getCol())
-        throw invalid_argument("Wrong cell input!");
+    if(sizeof(m_array) != sizeof(int)*2 || m_array[0]>=this->getRow() || m_array[1]>=this->getCol())
+        throw IllegalCoordinateException(coordinate);
+        //throw invalid_argument("Wrong cell input!");
     
     int x = m_array[0];
     int y = m_array[1];
@@ -113,13 +115,37 @@ void Board::operator=(const Board& b){
     }
 }
 
-bool Board::isRow(const Board b){}
+/*
+//takes the first char of every row and checks if every other char in that row is the same
+bool Board::isRow(const Board b){
+    char check;
+    bool ans=true;//change to true?
+    int i,j;
+    while(i<b.col){
+        check=b.board[i][0].getContent();
+        while(j<b.row){
+            if(b.board[i][j].getContent()!=check){
+                ans=false;
+            }
+            j++;
+        }
+        if(ans==true){
+            return true;
+        }
+        i++;
+    }
+    return false;
+}
+
+bool Board::isLine(const Board b){}
+
 
 bool Board::isDiagonalLeft(const Board b){}
 
 bool Board::isDiagonalRight(const Board b){}
 
-bool Board::isLine(const Board b){}
+
+*/
 
 
  
