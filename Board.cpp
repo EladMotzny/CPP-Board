@@ -74,7 +74,7 @@ ostream& operator<<(ostream& out,const Board& b){//changed to const
         for(int j=0; j<b.getCol(); j++){
             out << "" << b.board[i][j].getContent();// << " |";
         }
-    out << endl //<< "________________" << endl;
+    out << endl; //<< "________________" << endl;
 
     }
     return out;
