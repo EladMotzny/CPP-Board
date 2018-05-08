@@ -10,7 +10,7 @@ class Board{
         Board(int n);
         Board(const Board& other);
         ~Board();
-        friend ostream& operator<<(ostream& out, Board& b);
+        friend ostream& operator<<(ostream& out,const Board& b);
         Square& operator[](initializer_list<int> coordinate);
         /*  bool isRow(const Board b);//Checks to see if there is a row win 
         bool isLine(const Board b);//Checks to see if there is a line win
@@ -19,13 +19,15 @@ class Board{
         
         void operator=(const Board& b);
         void operator=(const char c);
-        int getRow(){
+        /*ELAD ADDED OPERATOR NEED TO TEST*/
+        //char operator=(initializer_list<int> coordinate);
+        int getRow() const{
             return this->row;
         }
-        int getCol(){
+        int getCol() const{
             return this->col;
         }
-        void printBoard(){
+        void printBoard() const{
             for(int i=0; i<row; i++){
                 cout << "|";
                 for(int j=0; j<col; j++){

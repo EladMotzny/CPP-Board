@@ -8,8 +8,11 @@ class Square{
             Square(char c);
             Square();
             ~Square();
+            operator char()const{
+                return this->getContent();
+            } 
             void operator=(const char c);
-            char getContent(){
+            char getContent() const{
                 return this->content;
             }
             void setContent(char c){

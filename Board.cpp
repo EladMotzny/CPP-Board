@@ -68,7 +68,7 @@ Board::~Board() //Destructor
 } 
 
 
-ostream& operator<<(ostream& out, Board& b){
+ostream& operator<<(ostream& out,const Board& b){//changed to const
     for(int i=0; i<b.getRow(); i++){
         //out << "|";
         for(int j=0; j<b.getCol(); j++){
@@ -114,6 +114,16 @@ void Board::operator=(const Board& b){
         }
     }
 }
+/*
+char Board::operator=(initializer_list<int> coordinate){
+    int *tmpArr=new int[2];
+    copy(coordinate.begin(), coordinate.end(), tmpArr);
+    int tmpX=tmpArr[0];
+    int tmpY=tmpArr[1];
+    delete[] tmpArr;
+    return this->board[tmpX][tmpY].getContent();
+}
+*/
 
 /*
 //takes the first char of every row and checks if every other char in that row is the same
