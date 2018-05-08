@@ -27,7 +27,7 @@ Board::Board(){
 }
 
 Board::Board(int n){
-    cout << "called c'tor" << endl;
+    //cout << "called c'tor" << endl;
     row = n;
     col = n;
     board = new Square*[col];
