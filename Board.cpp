@@ -6,6 +6,7 @@
 #include <cassert>
 #include <stdexcept>
 #include "IllegalCoordinateException.hpp"
+#include "Coordinate.h"
 
 
 using namespace std;
