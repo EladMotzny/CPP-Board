@@ -1,5 +1,5 @@
 #include "Square.h"
-//#pragma once
+#pragma once
 #include "Coordinate.h"
 
 class Board{
@@ -16,10 +16,11 @@ class Board{
         char operator[](Coordinate c) const{
             return this->board[c.getRow()][c.getCol()].getContent();
         }
-        /*  bool isRow(const Board b);//Checks to see if there is a row win 
-        bool isLine(const Board b);//Checks to see if there is a line win
-        bool isDiagonalLeft(const Board b);//checks to see if there is a diagonal win
-        bool isDiagonalRight(const Board b);//checks to see if there is a diagonal win   */
+        bool isWin(const Board& b, const char& c);
+        bool isRow(const Board& b, const char& c);//Checks to see if there is a row win 
+        bool isLine(const Board& b, const char& c);//Checks to see if there is a line win
+        bool isDiagonalLeft(const Board& b, const char& c);//checks to see if there is a diagonal win
+        bool isDiagonalRight(const Board& b, const char& c);//checks to see if there is a diagonal win 
         
         void operator=(const Board& b);
         void operator=(const char c);

@@ -1,11 +1,13 @@
+#pragma once
+
 class Coordinate
 {
-    int row;
-    int col;
+    uint row;
+    uint col;
     public:
         Coordinate();
         Coordinate(const Coordinate &c);
-        Coordinate(int r, int c);
+        Coordinate(uint r, uint c);
         ~Coordinate(){}
         int getRow(){
                 return row;
@@ -21,7 +23,7 @@ Coordinate::Coordinate(const Coordinate &c){
     this->col = c.col;
 }
 
-Coordinate::Coordinate(int r, int c){
+Coordinate::Coordinate(uint r, uint c){
     this->row = r;
     this->col = c;
 }

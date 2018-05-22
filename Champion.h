@@ -1,4 +1,4 @@
-
+#pragma once
 
 class Champion: public Player {
     string name = "Alex Fishman & Elad Mozny";

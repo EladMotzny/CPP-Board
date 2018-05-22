@@ -115,6 +115,85 @@ void Board::operator=(const Board& b){
         }
     }
 }
+
+bool Board::isRow(const Board& b, const char& c){
+    bool flag=false;
+    bool* flagArr=new bool[b.getCol()];
+    for(int i=0;i<b.getCol();i++){//initializing the array
+        flagArr[i]=true;
+    }
+    for(int i=0;i<b.getCol();i++){//the actual check
+        for(int j=0; j<b.getRow();j++){
+            if(b.board[i][j].getContent()!=c){
+                flagArr[i]==false;
+            }
+        }
+    }
+    for(int i=0;i<b.getCol();i++){//checking to see if there's a win
+        if(flagArr[i]==true){
+            flag=true;
+        }
+    }
+    delete[] flagArr;
+    return flag;
+}
+
+bool Board::isLine(const Board& b, const char& c){
+    bool flag=false;
+    bool* flagArr=new bool[b.getCol()];
+    for(int i=0;i<b.getCol();i++){//initializing the array
+        flagArr[i]=true;
+    }
+    for(int i=0;i<b.getCol();i++){//the actual check
+        for(int j=0; j<b.getRow();j++){//dont need to change getRow and getCol because its the same number
+            if(b.board[j][i].getContent()!=c){
+                flagArr[i]==false;
+            }
+        }
+    }
+    for(int i=0;i<b.getCol();i++){//checking to see if there's a win
+        if(flagArr[i]==true){
+            flag=true;
+        }
+    }
+    delete[] flagArr;
+    return flag;
+}
+
+bool Board::isDiagonalLeft(const Board& b, const char& c){//top left to bottom
+    bool flag=true;
+    for(int i=0;i<b.getCol();i++){
+        if(b.board[i][i].getContent()!=c){
+            flag=false;
+        }
+    }
+    return flag;
+}
+
+bool Board::isDiagonalRight(const Board& b, const char& c){//top right to bottom
+    bool flag=true;
+    int i=0;
+    int j=b.getCol()-1;//CHANGE TO b.getrow-1 or something
+    for(i=0;i<4;i++){
+        if(b.board[i][j].getContent()!=c){
+            flag=false;
+        }
+        j--;
+    }
+    return flag;
+
+}
+
+bool Board::isWin(const Board& b, const char& c){
+    if((isRow(b, c)==true)||(isLine(b,c)==true)||(isDiagonalLeft(b,c)==true)||(isDiagonalRight(b,c)==true)){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+
 /*
 char Board::operator=(initializer_list<int> coordinate){
     int *tmpArr=new int[2];
@@ -147,14 +226,6 @@ bool Board::isRow(const Board b){
     }
     return false;
 }
-
-bool Board::isLine(const Board b){}
-
-
-bool Board::isDiagonalLeft(const Board b){}
-
-bool Board::isDiagonalRight(const Board b){}
-
 
 */
 
