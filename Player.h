@@ -5,8 +5,12 @@ using namespace std;
 #pragma once
 
 class Player{
-    virtual const string name() const;
-    virtual const Coordinate play(const Board& board);
-    protected: 
+    public: 
         char myChar;
+
+    char getChar(){ return myChar; };
+    void setChar(const char c) { myChar=c;}
+    virtual const string name() const;
+    virtual const Coordinate play(const Board& board) = 0;
+    
 };

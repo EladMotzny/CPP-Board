@@ -21,15 +21,6 @@ class IllegalCoordinateException: public exception{
             delete[] corArr;
         }
 
-        /*
-        int getTmpRow(){
-            return this->tmpRow;
-        }
-        int getTmpCol(){
-            return this->tmpCol;
-        }
-        */
-
     virtual const string theCoordinate() const throw(){
        // return this->getTmpRow()+","+this->getTmpCol();
        ostringstream os;

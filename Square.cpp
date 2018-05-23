@@ -1,6 +1,15 @@
-using namespace std;
-#include "Square.h"
+#include "Board.h"
+#include "Champion.h"
+#include "DummyPlayers.h"
 #include "IllegalCharException.h"
+#include "Player.h"
+#include "Square.h"
+#include "TicTacToe.h"
+#include "Coordinate.h"
+#include "IllegalCoordinateException.hpp"
+
+
+using namespace std;
 
 Square::Square(){
     // cout << "Square default c-tor"<< endl;

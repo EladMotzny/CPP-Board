@@ -1,12 +1,17 @@
-#include <iostream>
-//#include "Square.h"
 #include "Board.h"
+#include "Champion.h"
+#include "DummyPlayers.h"
 #include "IllegalCharException.h"
+#include "Player.h"
+#include "Square.h"
+#include "TicTacToe.h"
+#include "IllegalCoordinateException.hpp"
+
+
+#include <iostream>
 #include <initializer_list>
 #include <cassert>
 #include <stdexcept>
-#include "IllegalCoordinateException.hpp"
-#include "Coordinate.h"
 
 
 using namespace std;
@@ -125,7 +130,7 @@ bool Board::isRow(const Board& b, const char& c){
     for(int i=0;i<b.getCol();i++){//the actual check
         for(int j=0; j<b.getRow();j++){
             if(b.board[i][j].getContent()!=c){
-                flagArr[i]==false;
+                flagArr[i]=false;
             }
         }
     }
@@ -147,7 +152,7 @@ bool Board::isLine(const Board& b, const char& c){
     for(int i=0;i<b.getCol();i++){//the actual check
         for(int j=0; j<b.getRow();j++){//dont need to change getRow and getCol because its the same number
             if(b.board[j][i].getContent()!=c){
-                flagArr[i]==false;
+                flagArr[i]=false;
             }
         }
     }
@@ -174,7 +179,7 @@ bool Board::isDiagonalRight(const Board& b, const char& c){//top right to bottom
     bool flag=true;
     int i=0;
     int j=b.getCol()-1;//CHANGE TO b.getrow-1 or something
-    for(i=0;i<4;i++){
+    for(i=0;i<b.getCol();i++){
         if(b.board[i][j].getContent()!=c){
             flag=false;
         }
@@ -192,6 +197,10 @@ bool Board::isWin(const Board& b, const char& c){
         return false;
     }
 }
+/*
+bool Board::isFull(const Board& b){
+    
+}*/
 
 
 /*
@@ -205,29 +214,6 @@ char Board::operator=(initializer_list<int> coordinate){
 }
 */
 
-/*
-//takes the first char of every row and checks if every other char in that row is the same
-bool Board::isRow(const Board b){
-    char check;
-    bool ans=true;//change to true?
-    int i,j;
-    while(i<b.col){
-        check=b.board[i][0].getContent();
-        while(j<b.row){
-            if(b.board[i][j].getContent()!=check){
-                ans=false;
-            }
-            j++;
-        }
-        if(ans==true){
-            return true;
-        }
-        i++;
-    }
-    return false;
-}
-
-*/
 
 
  

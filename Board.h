@@ -21,6 +21,7 @@ class Board{
         bool isLine(const Board& b, const char& c);//Checks to see if there is a line win
         bool isDiagonalLeft(const Board& b, const char& c);//checks to see if there is a diagonal win
         bool isDiagonalRight(const Board& b, const char& c);//checks to see if there is a diagonal win 
+        bool isFull(const Board& b);
         
         void operator=(const Board& b);
         void operator=(const char c);
@@ -32,7 +33,7 @@ class Board{
         int getCol() const{
             return this->col;
         }
-        uint size() const{
+        int size() const{
             return this->col;
         }
         void printBoard() const{

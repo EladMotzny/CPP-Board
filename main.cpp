@@ -1,34 +1,35 @@
-// #include "TicTacToe.h"
+
+#include "TicTacToe.h"
 #include "DummyPlayers.h"
 
 #include "Champion.h"
 
-// void printResults(const TicTacToe& game) {
-// 	cout << endl << "The final board is " << endl << game.board();
-// 	cout << "And the winner is " << game.winner().name() 
-// 	     << ", playing as " << game.winner().getChar() << "!" << endl;
-// }
+void printResults(const TicTacToe& game) {
+	cout << endl << "The final board is " << endl << game.board();
+	cout << "And the winner is " << game.winner().name() 
+	     << ", playing as " << game.winner().getChar() << "!" << endl;
+}
 
-// void playAndPrintResults(TicTacToe& game, Player& xPlayer, Player& oPlayer) {
-// 	game.play(xPlayer, oPlayer);
-// 	printResults(game);
-// }
+void playAndPrintResults(TicTacToe& game, Player& xPlayer, Player& oPlayer) {
+	game.play(xPlayer, oPlayer);
+	printResults(game);
+}
 
-// void playAndPrintWinner(TicTacToe& game, Player& xPlayer, Player& oPlayer) {
-// 	game.play(xPlayer, oPlayer);
-// 	cout << "The winner is " << game.winner().name() 
-// 	     << ", playing as " << game.winner().getChar() << "!" << endl;
-// }
+void playAndPrintWinner(TicTacToe& game, Player& xPlayer, Player& oPlayer) {
+	game.play(xPlayer, oPlayer);
+	cout << "The winner is " << game.winner().name() 
+	     << ", playing as " << game.winner().getChar() << "!" << endl;
+}
 
 
 int main() {
-	// TicTacToe game(4);       // Initializes a game on a 4x4 board
+	TicTacToe game(4);       // Initializes a game on a 4x4 board
 	XYPlayer player1;
 	YXPlayer player2;
 	IllegalPlayer player3;
 	ExceptionPlayer player4;
 
-	// playAndPrintResults(game, player1, player2);
+	playAndPrintResults(game, player1, player2);
 	/*
 		The final board is 
 		XXXX
@@ -38,7 +39,7 @@ int main() {
     	And the winner is XYPlayer, playing as X!
 	*/
 
-	// playAndPrintResults(game, player2, player1);  
+	playAndPrintResults(game, player2, player1);  
 	/*
 		The final board is 
 		XOOO
@@ -48,7 +49,7 @@ int main() {
         And the winner is YXPlayer, playing as X!
 	*/
 
-	// playAndPrintResults(game, player1, player3);  
+	playAndPrintResults(game, player1, player3);  
 	/*
 		The final board is 
 		X...
@@ -59,7 +60,7 @@ int main() {
 	*/
 
 
-	// playAndPrintResults(game, player3, player1);  
+	playAndPrintResults(game, player3, player1);  
 	/*
 		The final board is 
 		XO..
@@ -69,7 +70,7 @@ int main() {
         And the winner is XYPlayer, playing as O!
 	*/
 
-	// playAndPrintResults(game, player2, player4);  
+	playAndPrintResults(game, player2, player4);  
 	/*
 		The final board is 
 		X...
@@ -79,10 +80,10 @@ int main() {
 		And the winner is YXPlayer, playing as X!
 	*/
 
-	// playAndPrintResults(game, player4, player2);  
+	playAndPrintResults(game, player4, player2);  
 	/*
 		The final board is 
-		X...
+		....
 		....
 		....
 		....

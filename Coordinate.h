@@ -1,13 +1,38 @@
 #pragma once
+#include <cstdint>
 
+class Coordinate{
+
+    private:
+        unsigned int row;
+        unsigned int col;
+    
+    public:
+        Coordinate(unsigned int row, unsigned int col){
+            this->row=row;
+            this->col=col;
+        }
+        ~Coordinate();
+        unsigned int getCol() const { return this->col; }
+        unsigned int getRow() const { return this->row; }
+        Coordinate& operator=(const Coordinate& c){
+            this->row=c.getRow();
+            this->col=c.getCol();
+            return *this;
+        }
+};
+
+
+
+/*
 class Coordinate
 {
-    uint row;
-    uint col;
+    int row;
+    int col;
     public:
         Coordinate();
         Coordinate(const Coordinate &c);
-        Coordinate(uint r, uint c);
+        Coordinate(int r, int c);
         ~Coordinate(){}
         int getRow(){
                 return row;
@@ -23,7 +48,8 @@ Coordinate::Coordinate(const Coordinate &c){
     this->col = c.col;
 }
 
-Coordinate::Coordinate(uint r, uint c){
+Coordinate::Coordinate(int r, int c){
     this->row = r;
     this->col = c;
 }
+*/
