@@ -197,10 +197,18 @@ bool Board::isWin(const Board& b, const char& c){
         return false;
     }
 }
-/*
+
 bool Board::isFull(const Board& b){
-    
-}*/
+    bool flag = true;
+    for(int i=0;i<b.getCol();i++){
+        for(int j=0;i<b.getCol();i++){
+            if(b.board[i][j].getContent()=='.'){
+                flag=false;
+            }
+        }
+    }
+    return flag;
+}
 
 
 /*

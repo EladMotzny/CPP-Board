@@ -3,6 +3,7 @@
 #include "Coordinate.h"
 
 class Board{
+    public://ADDED THIS
     int row;
     int col;
     Square** board;
@@ -36,6 +37,7 @@ class Board{
         int size() const{
             return this->col;
         }
+        
         void printBoard() const{
             for(int i=0; i<row; i++){
                 cout << "|";

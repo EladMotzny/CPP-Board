@@ -1,4 +1,4 @@
-#include "Board.h"
+/*#include "Board.h"
 #include "Champion.h"
 #include "DummyPlayers.h"
 #include "IllegalCharException.h"
@@ -6,126 +6,117 @@
 #include "Square.h"
 #include "TicTacToe.h"
 #include "Coordinate.h"
-#include "IllegalCoordinateException.hpp"
+#include "IllegalCoordinateException.hpp"*/
+#include "TicTacToe.h"
 
 
-
-void TicTacToe::play(const Player& playerX,const Player& playerO){
-        
-    playerX.setChar('X');
-    playerO.setChar('O');
-    winner = &playerO;
-    
-    // _board = Symbol::P; //reset board
-    bool turn = true;
-    int i, numOfSquares = size;
-    
-    for(i = 0; i < numOfSquares && !has_won(playerX, playerO); i++){
-        if(turn){
-            try{
-                // _board[xPlayer.play(_board)] = xPlayer.getChar(); //need to check if it's a point
-                Coordinate c = playerX.play(game);
-                if(game[c] == '.'){
-                    game[c] = playerX.getChar();
-                }
-                else
-                    throw IllegalCoordinateException(c);
-                } 
-                catch(const IllegalCoordinateException ex){
-                    break;
-                } 
-                catch(const string& ex){
-                    break;
-                }
-            turn = false;
-        }
-        else{
-            try{
-                // _board[oPlayer.play(_board)] = oPlayer.getChar();
-                Coordinate c = playerO.play(game);
-                if(game[c] == '.'){
-                    game[c] = playerO.getChar();
-                } 
-                else
-                    throw IllegalCoordinateException(c);
+/*the game itself
+things to do:
+-declare a player flag to know who's turn this is, if the game is over (someone won) V
+-while loop, exit when board is full OR when gameWin flag is true V MIGHT WANT TO CHANGE ISFULL TO NOT GET A BOARD BUT TO USE THIS-> INSTEAD
+-if(player=='X') => turn for the first player X
+else => player O turn
+-every time a player wants to make a move check exceptions
+also check if there is already something inside the coordinate
+-after each turn, check with isWin and if there is change the gameWin flag to true and according to playerTurn, change the winner and print the name
+ */
+void TicTacToe::play(Player& firstX, Player& secondO){
+    bool gameWin=false;
+    char playerTurn='X';
+    firstX.setChar('X');
+    secondO.setChar('O');
+    Coordinate c(0,0);//the coordinate we use to check
+    while((gameWin==false) && (game.isFull(this->board())==false)){
+        if(playerTurn=='X'){//first player turn
+            /*
+            what to do for the checks:
+            -create a Coordinate c and do c=player.play
+            -for the first check just do an if to see if there's something inside the panel
+            -for the other checks use try and catch 
+            */
+            c = firstX.play(this->board());//gets the coordinate that the first player wants to play at
+            //checks to see if the panel is already taken
+            int i=c.getRow();
+            int j=c.getCol();
+            if(game.board[i][j].getContent()!='.'){//panel taken, ends game, O wins
+                gameWin=true;
+                *winPlayer=secondO;
             }
-            catch(const IllegalCoordinateException ex){
-                winner = &playerX;
-                break;
-            }   
-            catch(const string& ex){
-                winner = &playerX;
-                break;
+            else{//other checks
+                //checks for illegal char
+                try{
+                    int i=c.getRow();
+                    int j=c.getCol();
+                    game[{i,j}]='X';
+                }
+                catch(const IllegalCharException& ex){
+                    cout << "Illegal char!" << endl;
+                    *winPlayer=secondO;
+                    gameWin=true;
+                }
+                //checks for illegal coordinate
+                try{
+                    int i=c.getRow();
+                    int j=c.getCol();
+                    game[{i,j}]='X';
+                }
+                catch(const IllegalCoordinateException& ex){
+                    cout << "Illegal coordinate!" << endl;
+                    *winPlayer=secondO;
+                    gameWin=true;
+                }
             }
-            turn = true;
+            //now to see if there is a win
+            if(game.isWin(game,'X')==true){//there is a win
+                *winPlayer=firstX;
+                gameWin=true;
+            }
+            playerTurn='O';
         }
+        else{//second player turn
+            c = Coordinate(secondO.play(game));//gets the coordinate that the first player wants to play at
+            //checks to see if the panel is already taken
+            int i=c.getRow();
+            int j=c.getCol();
+            if(game.board[i][j].getContent()!='.'){//panel taken, ends game, O wins
+                gameWin=true;
+                *winPlayer=firstX;
+            }
+            else{//other checks
+                //checks for illegal char
+                try{
+                    int i=c.getRow();
+                    int j=c.getCol();
+                    game[{i,j}]='O';
+                }
+                catch(const IllegalCharException& ex){
+                    cout << "Illegal char!" << endl;
+                    *winPlayer=firstX;
+                    gameWin=true;
+                }
+                //checks for illegal coordinate
+                try{
+                    int i=c.getRow();
+                    int j=c.getCol();
+                    game[{i,j}]='O';
+                }
+                catch(const IllegalCoordinateException& ex){
+                    cout << "Illegal coordinate!" << endl;
+                    *winPlayer=firstX;
+                    gameWin=true;
+                }
+            }
+            //now to see if there is a win
+            if(game.isWin(game,'O')==true){//there is a win
+                *winPlayer=secondO;
+                gameWin=true;
+            }
+            playerTurn='X';
+        }
+    }
+    //out of the while loop, check for a tie
+    if((gameWin==false) && (game.isFull(game)==true)){
+        *winPlayer=secondO;
     }
 }
 
-bool has_won(Player& playerX, Player& playerO){
-
-    int i, j;
-    int size = game.size();
-    char c = game[{0,size-1}];
-    
-    //left diagonal
-    if(c != '.'){
-        for(i = 1; i < size; i++){
-            if(game[{i, size-1-i}] != c)
-                break;
-            if(i == size-1){
-                if(c == playerX.getChar())
-                    winPlayer = &playerX;
-                return true;
-            }
-        }
-    }
-    
-    c = game[{0,0}];
-    //right diagonal
-    if(c != '.'){
-        for(i = 1; i < size; i++){
-            if(game[{i, i}] != c)
-                break;
-            if(i == size-1){
-                if(c == playerX.getChar())
-                    winPlayer = &playerX;
-                return true;
-            }
-        }
-    }
-    
-    //columns
-    for(j = 0; j<size; j++){
-        c = game[{0,j}];
-        if(c != '.'){
-            for(i = 1; i<size; i++){
-                if(game[{i, j}] != c)
-                    break;
-                if(i == size-1){
-                    if(playerX.getChar() == c)
-                        winPlayer = &playerX;
-                    return true;
-                }
-            }
-        }
-    }
-    
-    //rows
-    for(i = 0; i<size; i++){
-        c = game[{i,0}];
-        if(c != '.'){
-            for(j = 1; j<size; j++){
-                if(game[{i, j}] != c)
-                    break;
-                if(j == size-1){
-                    if(playerX.getChar() == c)
-                        winPlayer = &playerX;
-                    return true;
-                }
-            }
-        }
-    }
-    
-return false;
-}
