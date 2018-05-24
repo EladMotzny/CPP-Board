@@ -1,10 +1,5 @@
 #include "Board.h"
-#include "Champion.h"
-#include "DummyPlayers.h"
 #include "IllegalCharException.h"
-#include "Player.h"
-#include "Square.h"
-#include "TicTacToe.h"
 #include "IllegalCoordinateException.hpp"
 
 

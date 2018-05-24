@@ -1,4 +1,4 @@
-#include "Coordinate.h"
+//#include "Coordinate.h"
 #include "Board.h"
 #include <string>
 using namespace std;
@@ -10,7 +10,7 @@ class Player{
 
         char getChar() const { return myChar; };
         inline void setChar(const char& c) { myChar=c;}
-        virtual const string name() const;
-        virtual const Coordinate play(const Board& board) = 0;
+        virtual const string name() const{return "";};
+        virtual const Coordinate play(const Board& board) {};
     
 };

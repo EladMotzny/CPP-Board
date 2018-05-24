@@ -1,5 +1,5 @@
 #pragma once
-#include <cstdint>
+//#include <cstdint>
 
 class Coordinate{
 
@@ -12,7 +12,7 @@ class Coordinate{
             this->row=row;
             this->col=col;
         }
-        ~Coordinate();
+        //~Coordinate();
         unsigned int getCol() const { return this->col; }
         unsigned int getRow() const { return this->row; }
         Coordinate& operator=(const Coordinate& c){

@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 #include "Board.h"
 #include "Champion.h"
 #include "DummyPlayers.h"
@@ -7,9 +7,10 @@
 #include "Square.h"
 #include "TicTacToe.h"
 #include "Coordinate.h"
+#include "IllegalCoordinateException.hpp"*/
+#include "Player.h"
 #include "IllegalCoordinateException.hpp"
-
-
+#include "IllegalCharException.h"
 #include <iostream>
 using namespace std;
 
