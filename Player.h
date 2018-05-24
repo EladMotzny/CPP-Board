@@ -1,4 +1,3 @@
-//#include "Coordinate.h"
 #include "Board.h"
 #include <string>
 using namespace std;

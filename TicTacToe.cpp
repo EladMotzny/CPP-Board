@@ -1,17 +1,7 @@
-/*#include "Board.h"
-#include "Champion.h"
-#include "DummyPlayers.h"
-#include "IllegalCharException.h"
-#include "Player.h"
-#include "Square.h"
-#include "TicTacToe.h"
-#include "Coordinate.h"
-#include "IllegalCoordinateException.hpp"*/
 #include "TicTacToe.h"
 
 
 /*the game itself
-things to do:
 -declare a player flag to know who's turn this is, if the game is over (someone won) V
 -while loop, exit when board is full OR when gameWin flag is true V MIGHT WANT TO CHANGE ISFULL TO NOT GET A BOARD BUT TO USE THIS-> INSTEAD
 -if(player=='X') => turn for the first player X

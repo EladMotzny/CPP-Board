@@ -22,9 +22,7 @@ class IllegalCoordinateException: public exception{
         }
 
     virtual const string theCoordinate() const throw(){
-       // return this->getTmpRow()+","+this->getTmpCol();
        ostringstream os;
-       //os << this->getTmpRow() << "," << this->getTmpCol();
        os << tmpRow << "," << tmpCol;
        return os.str(); 
     }

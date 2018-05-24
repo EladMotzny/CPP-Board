@@ -1,13 +1,7 @@
-//#pragma once
-//#include "Board.h"
-//#include "Champion.h"
-//#include "DummyPlayers.h"
-//#include "IllegalCharException.h"
 #include "Player.h"
 #include "Coordinate.h"
 #include <string>
-//#include "TicTacToe.h"
-//#include "IllegalCoordinateException.hpp"
+
 
 
 class Champion: public Player {

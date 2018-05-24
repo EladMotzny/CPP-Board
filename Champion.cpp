@@ -1,10 +1,3 @@
-/*#include "Board.h"
-#include "Champion.h"
-#include "DummyPlayers.h"
-#include "IllegalCharException.h"
-#include "Player.h"
-#include "TicTacToe.h"
-#include "IllegalCoordinateException.hpp"*/
 #include "Champion.h"
 
 const Coordinate Champion::play(const Board& board) {
